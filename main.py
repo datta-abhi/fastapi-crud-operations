@@ -39,7 +39,7 @@ def add_employees(emp:Emp):
         new_id = 1
     else:
         new_id = max(employees.keys())+1         
-    employees[new_id] = emp.model_dump()
+    employees[new_id] = emp.model_dump()  # Convert Basemodel to dictionary for storing
                 
     return employees[new_id]
 
@@ -49,7 +49,7 @@ def update_employee(emp_id:int, emp: UpdateEmp):
     if emp_id not in employees:
         return f"No employee found with employee ID {emp_id}"
     else:
-        if emp.name is not None:
+        if emp.name is not None:    # since we are accessing attributes of a class we use emp.name syntax
             employees[emp_id]['name'] = emp.name
         if emp.age is not None:
             employees[emp_id]['age'] = emp.age
@@ -59,9 +59,9 @@ def update_employee(emp_id:int, emp: UpdateEmp):
         return employees[emp_id]    # returns updated employee info
                     
 @app.delete('/delete-employee/{emp_id}')
-def delete_employee(emp_id:int):
+def delete_employee(emp_id:int):    # here emp_id is path-param
     if emp_id not in employees:
         return f"No employee found with employee ID {emp_id}"
     else:
-        del employees[emp_id]  
+        del employees[emp_id]  # deleting from dictionary using key
         return employees                          
