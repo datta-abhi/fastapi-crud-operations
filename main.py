@@ -58,3 +58,10 @@ def update_employee(emp_id:int, emp: UpdateEmp):
             
         return employees[emp_id]    # returns updated employee info
                     
+@app.delete('/delete-employee/{emp_id}')
+def delete_employee(emp_id:int):
+    if emp_id not in employees:
+        return f"No employee found with employee ID {emp_id}"
+    else:
+        del employees[emp_id]  
+        return employees                          
