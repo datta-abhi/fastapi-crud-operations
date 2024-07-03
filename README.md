@@ -6,5 +6,7 @@ We are creating API endpoints for
 4) PUT to update existing employee info
 5) DELETE to delete an employee info
 
+### *Python version: 3.10*
+
 **To run the code in main file do the following in CLI:**  
 *uvicorn main:app --reload*
