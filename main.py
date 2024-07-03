@@ -19,15 +19,16 @@ employees = {
 # homepage
 @app.get('/')
 def index():
-    return "Welcome to our API service"
+    return "Welcome to our FASTAPI service for CRUD operations on employee db"
 
 @app.get('/employees')
 def get_all():
     return employees
 
-@app.get('/employee/{emp_id}')
+@app.get('/employee/{emp_id}')  # emp_id is path param in a placeholder
 def get_emp_info(emp_id:int):
     if emp_id not in employees:
+        # validating if employee id exist in our db
         return f"No employee found with employee ID {emp_id}"
     else:
         return employees[emp_id]
